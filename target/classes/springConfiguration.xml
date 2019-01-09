@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--Declaración de Beans -->
+    <!--Capa de datos a servicio para Task-->
+    <bean id="taskDao" class="ar.com.taskmanager.dataAccess.TaskDao"/>
+    <bean id="taskService" class="ar.com.taskmanager.service.TaskService">
+        <constructor-arg index="0" ref="taskDao"/>
+    </bean>
+
+    <!--Capa de datos a servicio para User-->
+    <bean id ="userDao" class="ar.com.taskmanager.dataAccess.UserDao"/>
+    <bean id="userService" class="ar.com.taskmanager.service.UserService">
+        <constructor-arg index="0" ref="userDao"/>
+    </bean>
+
+
+</beans>
+

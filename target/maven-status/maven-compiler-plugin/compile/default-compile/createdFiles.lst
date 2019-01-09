@@ -1,0 +1,10 @@
+ar\com\taskmanager\application\TaskApplication.class
+ar\com\taskmanager\dataAccess\IDao.class
+ar\com\taskmanager\service\TaskService.class
+ar\com\taskmanager\dataAccess\TaskDao.class
+ar\com\taskmanager\model\interfaces\ITask.class
+ar\com\taskmanager\customException\CustomException.class
+ar\com\taskmanager\model\domain\User.class
+ar\com\taskmanager\model\domain\Task.class
+ar\com\taskmanager\application\Application.class
+ar\com\taskmanager\service\IService.class
