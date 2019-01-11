@@ -48,4 +48,24 @@ public class User {
     public void setUserAnnotation(String userAnnotation) {
         this.userAnnotation = userAnnotation;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (!userId.equals(user.userId)) return false;
+        if (!userIdentifier.equals(user.userIdentifier)) return false;
+        return userAnnotation.equals(user.userAnnotation);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = userId.hashCode();
+        result = 31 * result + userIdentifier.hashCode();
+        result = 31 * result + userAnnotation.hashCode();
+        return result;
+    }
 }

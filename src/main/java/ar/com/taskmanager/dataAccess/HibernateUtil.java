@@ -46,7 +46,6 @@ public class HibernateUtil {
             setting.put(Environment.SHOW_SQL,"true");
             setting.put(Environment.FORMAT_SQL,"true");
 
-
             // Apply settings
             registryBuilder.applySettings(setting);
 

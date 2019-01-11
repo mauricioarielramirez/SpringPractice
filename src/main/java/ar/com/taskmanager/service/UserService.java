@@ -44,7 +44,9 @@ public class UserService implements IService<User>{
         return true;
     }
 
-    public Boolean verifyUser(User user) throws CustomException {
-        return (getEntity(user.getUserId())!=null?true:false);
+    public Boolean verifyUser(Long id) throws CustomException {
+        return (getEntity(id)!=null?true:false);
     }
+
+
 }

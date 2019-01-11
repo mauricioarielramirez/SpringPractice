@@ -8,3 +8,4 @@ ar\com\taskmanager\model\domain\User.class
 ar\com\taskmanager\model\domain\Task.class
 ar\com\taskmanager\application\Application.class
 ar\com\taskmanager\service\IService.class
+ar\com\taskmanager\model\dto\IdentifierDTO.class

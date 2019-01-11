@@ -6,6 +6,7 @@ import ar.com.taskmanager.model.domain.User;
 import ar.com.taskmanager.service.JsonConverter;
 import ar.com.taskmanager.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static spark.Spark.*;
 
@@ -15,6 +16,7 @@ import static spark.Spark.*;
 public class UserApplication {
     private UserService userService;
 
+    @Autowired
     public UserApplication(final UserService userService) {
         this.userService = userService;
         setRoutes();

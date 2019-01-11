@@ -1,9 +1,11 @@
 package ar.com.taskmanager.model.domain;
 
-import javax.annotation.Generated;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -18,11 +20,17 @@ public class Task {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     @Column(name = "taskName")
+
     private String taskName;
     @Column(name = "taskType")
     private String taskType;
     @Column(name = "taskDescription")
     private String taskDescription;
+    @ManyToOne
+    @Fetch(FetchMode.SELECT)
+    private User taskOwnerCreator;
+    @Column(name = "taskDateCreate")
+    private Date taskDateCreate;
     @ManyToMany
     private Set<User> taskOwners;
 
@@ -37,10 +45,11 @@ public class Task {
     public Task() {
     }
 
-    public Task(Long Id, String taskName, String taskType) {
+    public Task(Long Id, String taskName, String taskType,User taskOwnerCreator) {
         this.id = id;
         this.taskName = taskName;
         this.taskType = taskType;
+        this.taskOwnerCreator = taskOwnerCreator;
     }
 
     public Long getId() {
@@ -82,4 +91,21 @@ public class Task {
     public void setOwners(Set<User> taskOwners) {
         this.taskOwners = taskOwners;
     }
+
+    public User getTaskOwnerCreator() {
+        return taskOwnerCreator;
+    }
+
+    public void setTaskOwnerCreator(User taskOwnerCreator) {
+        this.taskOwnerCreator = taskOwnerCreator;
+    }
+
+    public Date getTaskDateCreate() {
+        return taskDateCreate;
+    }
+
+    public void setTaskDateCreate(Date taskDateCreate) {
+        this.taskDateCreate = taskDateCreate;
+    }
 }
+

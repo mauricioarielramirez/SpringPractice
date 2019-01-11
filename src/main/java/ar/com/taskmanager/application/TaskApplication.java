@@ -2,6 +2,7 @@ package ar.com.taskmanager.application;
 
 import ar.com.taskmanager.customException.CustomException;
 import ar.com.taskmanager.model.domain.Task;
+import ar.com.taskmanager.model.dto.IdentifierDTO;
 import ar.com.taskmanager.service.JsonConverter;
 import ar.com.taskmanager.service.TaskService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -70,9 +71,15 @@ public class TaskApplication {
             }
         },new JsonConverter());
 
-        /*post("/prueba",(req,res)->{
-            return taskService.linkUserToTask()
-        },new JsonConverter());*/
+        //Voy a usar esta ruta para hacer las vinculaciones
+        post("/task/link",(req,res)->{
+            return taskService.linkUserToTask(Application.readBodyLink(req.body()),TaskService.LINK);
+        },new JsonConverter());
+
+        //y este para desvincular
+        post("/task/unlink",(req,res)->{
+            return taskService.linkUserToTask(Application.readBodyLink(req.body()),TaskService.UNLINK);
+        },new JsonConverter());
 
     }
 
@@ -93,5 +100,6 @@ public class TaskApplication {
         }
         return null;
     }
+
 
     }

@@ -8,6 +8,7 @@
     <bean id="taskDao" class="ar.com.taskmanager.dataAccess.TaskDao"/>
     <bean id="taskService" class="ar.com.taskmanager.service.TaskService">
         <constructor-arg index="0" ref="taskDao"/>
+        <constructor-arg index="1" ref="userService"/>
     </bean>
 
     <!--Capa de datos a servicio para User-->

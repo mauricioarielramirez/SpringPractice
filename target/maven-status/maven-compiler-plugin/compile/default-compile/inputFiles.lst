@@ -2,12 +2,16 @@ C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\se
 C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\service\IService.java
 C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\dataAccess\Dao.java
 C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\dataAccess\HibernateUtil.java
+C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\dataAccess\UserDao.java
 C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\application\Application.java
 C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\service\JsonConverter.java
+C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\model\dto\IdentifierDTO.java
 C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\dataAccess\IDao.java
 C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\model\domain\Task.java
 C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\customException\CustomException.java
 C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\model\domain\User.java
+C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\service\UserService.java
+C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\application\UserApplication.java
 C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\dataAccess\TaskDao.java
 C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\model\interfaces\ITask.java
 C:\Users\ArielRamirez\IdeaProjects\myproject\src\main\java\ar\com\taskmanager\application\TaskApplication.java
