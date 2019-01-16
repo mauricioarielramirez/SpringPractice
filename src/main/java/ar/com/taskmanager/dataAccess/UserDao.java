@@ -1,7 +1,11 @@
 package ar.com.taskmanager.dataAccess;
 
 import ar.com.taskmanager.customException.CustomException;
+import ar.com.taskmanager.model.domain.Task;
 import ar.com.taskmanager.model.domain.User;
+import org.hibernate.Criteria;
+
+import java.util.List;
 
 /**
  * Created by ArielRamirez on 9/1/2019.
@@ -60,5 +64,29 @@ public class UserDao extends Dao implements IDao<User> {
             customException.addMessage(CustomException.ERROR_TAG, CustomException.GENERAL_MESSAGE);
             throw customException;
         }
+    }
+
+    @Override
+    public List<User> listEntities(Integer lastPage, Integer rangePagination) throws CustomException  {
+        try {
+            verifySessionAndTransaction();
+            Criteria cr = session.createCriteria(User.class);
+            return cr.list();
+        }catch (Exception ex){
+            CustomException customException = new CustomException();
+            customException.addMessage(CustomException.STACK_TRACE, ex.getMessage());
+            customException.addMessage(CustomException.ERROR_TAG, CustomException.GENERAL_MESSAGE);
+            throw customException;
+        }
+    }
+
+    @Override
+    public List<User> findByExample(User object,Integer lastPage, Integer rangePagination) throws CustomException {
+        return null;
+    }
+
+    @Override
+    public List<User> findLikeByExample(User object,Integer lastPage, Integer rangePagination) throws CustomException {
+        return null;
     }
 }

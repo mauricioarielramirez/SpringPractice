@@ -2,8 +2,11 @@ package ar.com.taskmanager.service;
 
 import ar.com.taskmanager.customException.CustomException;
 import ar.com.taskmanager.dataAccess.UserDao;
+import ar.com.taskmanager.model.domain.Task;
 import ar.com.taskmanager.model.domain.User;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by ArielRamirez on 9/1/2019.
@@ -44,9 +47,18 @@ public class UserService implements IService<User>{
         return true;
     }
 
+    @Override
+    public List<User> listAll(Integer lastPage, Integer rangePagination) throws CustomException {
+        return null;
+    }
+
+
     public Boolean verifyUser(Long id) throws CustomException {
         return (getEntity(id)!=null?true:false);
     }
 
+    public Boolean validateUserFromAPI(Long userID) {
+        return true;
+    }
 
 }

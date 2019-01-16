@@ -23,7 +23,7 @@ public class UserApplication {
     }
 
     public void  setRoutes() {
-        get("/user/:id", (req,res)->{
+        get("/user/get/:id", (req,res)->{
             try{
                 res.type("application/json");
                 Long id = Long.valueOf(req.params("id"));
@@ -58,6 +58,15 @@ public class UserApplication {
             res.type("application/json");
             try {
                 return userService.deleteEntity(readBody(req.body()));
+            }catch (CustomException ex) {
+                return  ex.getElements();
+            }
+        },new JsonConverter());
+
+        get("/user/list",(req,res)->{
+            try{
+                res.type("application/json");
+                return userService.listAll(0,0);
             }catch (CustomException ex) {
                 return  ex.getElements();
             }

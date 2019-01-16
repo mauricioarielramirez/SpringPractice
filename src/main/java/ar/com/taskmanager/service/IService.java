@@ -6,6 +6,8 @@ package ar.com.taskmanager.service;
 
 import ar.com.taskmanager.customException.CustomException;
 
+import java.util.List;
+
 /**
  * Métodos bases del servicio
  */
@@ -15,4 +17,5 @@ public interface IService <T>{
     public Boolean modifyEntity(T entity) throws CustomException;
     public Boolean deleteEntity(T entity) throws CustomException;
     public Boolean deleteEntity(Long id) throws CustomException;
+    public List<T> listAll(Integer lastPage, Integer rangePagination) throws CustomException;
 }

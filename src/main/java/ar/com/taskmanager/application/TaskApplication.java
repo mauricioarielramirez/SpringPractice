@@ -5,7 +5,11 @@ import ar.com.taskmanager.model.domain.Task;
 import ar.com.taskmanager.model.dto.IdentifierDTO;
 import ar.com.taskmanager.service.JsonConverter;
 import ar.com.taskmanager.service.TaskService;
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
+import java.text.SimpleDateFormat;
 
 import static spark.Spark.*;
 
@@ -31,7 +35,7 @@ public class TaskApplication {
     public void setRoutes() {
         port(8080);
 
-        get("/task/:id", (req,res)->{
+        get("/task/get/:id", (req,res)->{
             try{
                 res.type("application/json");
                 Long id = Long.valueOf(req.params("id"));
@@ -81,10 +85,36 @@ public class TaskApplication {
             return taskService.linkUserToTask(Application.readBodyLink(req.body()),TaskService.UNLINK);
         },new JsonConverter());
 
+
+        get("/task/list/:last/:range",(req,res)->{
+            try{
+                res.type("application/json");
+                Integer last = Integer.valueOf(req.params("last"));
+                Integer range = Integer.valueOf(req.params("range"));
+                return taskService.listAll(last,range);
+            }catch (CustomException ex) {
+                return  ex.getElements();
+            }
+        },new JsonConverter());
+
+        get("/task/listByExample/:last:range",(req,res)->{
+            res.type("application/json");
+            Integer last = Integer.valueOf(req.params("last"));
+            Integer range = Integer.valueOf(req.params("range"));
+            return  taskService.listByExample(readBody(req.body()),last,range);
+        },new JsonConverter());
+
+        get("/task/listLikeByExample/:last:range",(req,res)->{
+            res.type("application/json");
+            Integer last = Integer.valueOf(req.params("last"));
+            Integer range = Integer.valueOf(req.params("range"));
+            return  taskService.listLikeByExample(readBody(req.body()),last,range);
+        },new JsonConverter());
+
     }
 
     /**
-     * Convertimos en objeto el json, sino lanzo la excepción pero lo controlo con mi obnj
+     * Convertimos en objeto el json, sino lanzo la excepción pero lo controlo con mi obj
      * @param jsonData
      * @return
      * @throws Exception

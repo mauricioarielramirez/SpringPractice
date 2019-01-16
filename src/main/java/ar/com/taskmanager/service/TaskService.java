@@ -6,14 +6,13 @@ import ar.com.taskmanager.dataAccess.TaskDao;
 import ar.com.taskmanager.model.domain.Task;
 import ar.com.taskmanager.model.domain.User;
 import ar.com.taskmanager.model.dto.IdentifierDTO;
+import com.sun.corba.se.spi.orbutil.fsm.FSM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.text.DateFormat;
+import java.util.*;
 
 /**
  * Created by ArielRamirez on 7/1/2019.
@@ -39,7 +38,7 @@ public class TaskService implements IService<Task>{
 
     @Override
     public Boolean addEntity(Task entity) throws CustomException {
-        //entity.setTaskDateCreate(Calendar.getInstance().getTime());
+        entity.setTaskDateCreate(Calendar.getInstance().getTime());
         taskDao.add(entity);
         return true;
     }
@@ -88,5 +87,18 @@ public class TaskService implements IService<Task>{
         users = task.getOwners();
         users.remove(user);
         modifyEntity(task);
+    }
+
+    @Override
+    public List<Task> listAll(Integer lastPage, Integer rangePagination) throws CustomException {
+        return taskDao.listEntities(lastPage, rangePagination);
+    }
+
+    public List<Task> listByExample(Task task,Integer lastPage, Integer rangePagination) throws CustomException {
+        return taskDao.findByExample(task,lastPage, rangePagination);
+    }
+
+    public List<Task> listLikeByExample(Task task,Integer lastPage, Integer rangePagination) throws CustomException {
+        return taskDao.findLikeByExample(task,lastPage, rangePagination);
     }
 }
